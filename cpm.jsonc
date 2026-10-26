@@ -1,0 +1,26 @@
+// The package manifest: JSON with comments and trailing commas (JSONC).
+// Reference: docs/spec/manifest.md in the CPM repository.
+{
+  "name": "cpm-args",
+  "version": "0.1.0",
+  "description": "Command-line arguments for C++20: options and positionals bound to typed variables, subcommands, environment fallbacks, generated help and errors with suggestions",
+  "license": "MIT",
+  "repository": "https://github.com/cpm-org/cpm-args",
+  "keywords": ["cli", "arguments", "command-line", "options", "parser"],
+
+  // The oldest standard a project using cpm-args may have.
+  "std": "c++20",
+
+  "type": "static-lib",
+
+  "devDependencies": {
+    "cpm-test": "^0.1.0"
+  },
+
+  "profiles": {
+    // What CI builds with, so the headers stay clean for projects that use every warning CPM knows.
+    "strict": { "inherits": "debug", "warnings": "strict", "werror": true },
+    // AddressSanitizer and UBSan, on the platforms that have them (CI runs it on Linux).
+    "sanitize": { "inherits": "debug", "sanitizers": ["address", "undefined"] }
+  }
+}
